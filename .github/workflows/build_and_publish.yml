@@ -45,8 +45,8 @@ jobs:
    steps:
 
     - name: Get release version
-      uses: nimblehq/branch-tag-action@v1
-      id: extract
+      run: |
+        echo "github ref is: ${{ github.ref }}"
 
     - name: Check out git repository
       uses: actions/checkout@v2
@@ -57,4 +57,4 @@ jobs:
         name: clinicalgenomics/scout
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        tags: "latest,${{ steps.extract.outputs.branch_tag }}"
+        tags: "latest"
