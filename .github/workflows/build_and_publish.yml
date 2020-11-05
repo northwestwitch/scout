@@ -45,8 +45,10 @@ jobs:
    steps:
 
     - name: Get release version
+      id: get_version
       run: |
-        echo ::set-output name=release_version::$(echo ${github.ref:10})
+        echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+        echo "Github tag is set to ${{ steps.get_version.outputs.VERSION }}
         
     - name: Check out git repository
       uses: actions/checkout@v2
@@ -57,4 +59,4 @@ jobs:
         name: clinicalgenomics/scout
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        tags: "latest,${{ steps.vars.outputs.release_version }}"
+        tags: "latest,${{ steps.get_version.outputs.VERSION }}"
