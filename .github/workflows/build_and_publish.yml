@@ -46,6 +46,7 @@ jobs:
     - name: Get release version
       id: get_version
       run: echo ::set-output name=release_version::$(echo ${GITHUB_REF:10})
+      run: echo "Found repo version with tag: ${{ steps.vars.outputs.release_version }}"
     - name: Check out the repo
       uses: actions/checkout@v2
     - name: Publish to Registry
