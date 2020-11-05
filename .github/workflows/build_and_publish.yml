@@ -39,7 +39,7 @@ jobs:
        user: __token__
        password: ${{ secrets.pypi_password }}
 
-  docker-image-CI:
+ docker-image-CI:
    name: Docker Image CI
    runs-on: ubuntu-latest
    steps:
