@@ -1,0 +1,18 @@
+# Start a Pod with an interactive Scout shell
+apiVersion: v1
+kind: Pod
+metadata:
+  name: scout-cli
+  labels:
+    app: scout-cli
+spec:
+  volumes:
+  - name: shared-data
+    emptyDir: {}
+  containers:
+  - name: scout-cli
+    image: clinicalgenomics/scout
+    tty: true
+    env:
+    - name: flask-config
+      value: /Users/chiararasi/Documents/work/GITs/scout/container/k8s-configuration/scout-config.yaml
